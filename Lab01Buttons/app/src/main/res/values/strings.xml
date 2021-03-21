@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lab01Buttons</string>
+    <string name="choice_text">It\'s a new day at Wall Street! What will you choose to do today?</string>
+    <string name="buy">Invest in GameStop</string>
+    <string name="hold">Hold</string>
+    <string name="sell">Sell</string>
+    <string name="initial_gme">0 GME</string>
+    <string name="initial_cash">$0</string>
+    <string name="gamestop_owned">Gamestop Owned</string>
+    <string name="cash">Cash on hand</string>
+</resources>

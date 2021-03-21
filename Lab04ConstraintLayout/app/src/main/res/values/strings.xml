@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Lab04ConstraintLayout</string>
+    <string name="top_left">Top left</string>
+    <string name="top_right">Top right</string>
+    <string name="bottom_left">Bottom left</string>
+    <string name="bottom_right">Bottom right</string>
+    <string name="hello_mr_tra">Hello Mr. Tra!</string>
+    <string name="previous_view">Previous view</string>
+    <string name="next_view">Next view</string>
+    <string name="click_this_button">Click this button!</string>
+    <string name="click_me">Click me!</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a rutrum dui, sed mattis erat. Sed tempor metus eu risus vulputate eleifend quis vel ipsum. Cras sodales lacus lorem, et volutpat odio tincidunt non. Duis cursus lacinia libero a tincidunt. Pellentesque pretium, ligula non semper sollicitudin, purus neque fermentum nunc, non varius purus ante sed eros. Ut venenatis cursus porta. Donec iaculis vitae erat vel maximus. Duis sollicitudin egestas justo viverra tristique.
+Sed gravida erat gravida, vulputate lacus eget, faucibus purus. Sed vehicula neque maximus risus fermentum, non rutrum elit aliquam. Phasellus sed libero lectus. Aenean lacinia, nunc vitae porta molestie, mauris leo lobortis urna, eget vestibulum nulla sem sit amet nulla. Nullam vel mollis lectus. Donec tempor magna pellentesque malesuada aliquam. Cras sit amet orci magna. Quisque hendrerit magna urna, vel tincidunt neque faucibus in. Etiam pellentesque, erat condimentum bibendum dapibus, nulla elit sodales magna, vitae semper sapien magna at odio. Aenean nec finibus nibh. Curabitur at lorem et diam condimentum consectetur. Nam dignissim ac odio tristique scelerisque. Curabitur cursus lectus id iaculis vehicula. Sed pulvinar est ut dapibus tristique. Duis ac ante sit amet justo aliquam semper at nec massa. Integer lacinia neque orci, sit amet cursus purus lacinia non.
+Morbi congue massa tortor. Nam rutrum bibendum purus, ut auctor ipsum. Integer id blandit odio. Fusce a elit pharetra enim aliquet porta quis ullamcorper nulla. Aenean aliquet orci eu condimentum consequat. Donec rhoncus a magna vel scelerisque. Vivamus vehicula dapibus vulputate.
+Vestibulum eget purus iaculis, luctus sem gravida, ultricies tortor. Donec ex magna, hendrerit vel nibh sed, auctor euismod massa. Nullam eu orci hendrerit, blandit ex id, hendrerit eros. Cras varius facilisis dui. Suspendisse tincidunt feugiat aliquam. Ut eget lorem in nibh egestas scelerisque eget eget sapien. Mauris aliquet viverra tellus. Curabitur dignissim vitae metus quis imperdiet.
+Proin enim leo, lobortis in cursus nec, semper vitae eros. Sed a orci iaculis, elementum nibh vel, tristique tortor. Curabitur volutpat quis dui nec ultricies. Nam fermentum, felis in maximus hendrerit, metus quam elementum justo, nec fermentum nulla sem vitae dui. Nullam ut felis eros. Phasellus eget faucibus ante. Suspendisse potenti. Nulla iaculis felis ac sagittis finibus. Maecenas eu vulputate magna, vitae euismod nulla. Mauris sit amet pretium diam. Suspendisse ante lectus, pharetra vitae tincidunt id, euismod pretium nunc. Fusce magna felis, dictum eu pharetra ut, fermentum sed nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur et massa non justo ornare eleifend ornare ac nisl. Ut nisi leo, bibendum ac tincidunt aliquam, venenatis ac sem.
+    </string>
+    <string name="yes">yes</string>
+</resources>

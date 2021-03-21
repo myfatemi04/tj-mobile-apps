@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lab03 SharedPreferences</string>
+    <string name="button">Button 1: 0</string>
+    <string name="button2">Button 2: 0</string>
+    <string name="button3">Button 3: 0</string>
+    <string name="button4">Button 4: 0</string>
+</resources>

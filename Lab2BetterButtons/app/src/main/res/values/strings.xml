@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Lab 2 Better Buttons</string>
+    <string name="name">Type something!</string>
+    <string name="hey_tj">Hey TJ!!</string>
+    <string-array name="lyrics">
+        <item>I don\'t want a lot for Christmas</item>
+        <item>There is just one thing I need</item>
+        <item>I don\'t care about the presents</item>
+        <item>Underneath the Christmas tree</item>
+        <item>I just want you for my own</item>
+        <item>More than you could ever know</item>
+        <item>Make my wish come true</item>
+        <item>All I want for Christmas is you, yeah</item>
+        <item>I don\'t want a lot for Christmas</item>
+        <item>There is just one thing I need</item>
+        <item>And I don\'t care about the presents</item>
+        <item>Underneath the Christmas tree</item>
+        <item>I don\'t need to hang my stocking</item>
+        <item>There upon the fireplace</item>
+        <item>Santa Claus won\'t make me happy</item>
+        <item>With a toy on Christmas Day</item>
+        <item>I just want you for my own</item>
+        <item>More than you could ever know</item>
+        <item>Make my wish come true</item>
+        <item>All I want for Christmas is you</item>
+        <item>You, baby</item>
+        <item>Oh, I won\'t ask for much this Christmas</item>
+        <item>I won\'t even wish for snow</item>
+        <item>And I\'m just gonna keep on waiting</item>
+        <item>Underneath the mistletoe</item>
+        <item>I won\'t make a list and send it</item>
+        <item>To the North Pole for Saint Nick</item>
+        <item>I won\'t even stay awake to</item>
+        <item>Hear those magic reindeer click</item>
+        <item>\'Cause I just want you here tonight</item>
+        <item>Holding on to me so tight</item>
+        <item>What more can I do?</item>
+        <item>Baby, all I want for Christmas is you</item>
+        <item>You, baby</item>
+        <item>Oh, all the lights are shining so brightly everywhere</item>
+        <item>And the sound of children\'s laughter fills the air</item>
+        <item>And everyone is singing</item>
+        <item>I hear those sleigh bells ringing</item>
+        <item>Santa, won\'t you bring me the one I really need?</item>
+        <item>Won\'t you please bring my baby to me?</item>
+        <item>Oh, I don\'t want a lot for Christmas</item>
+        <item>This is all I\'m asking for</item>
+        <item>I just wanna see my baby</item>
+        <item>Standing right outside my door</item>
+        <item>Oh, I just want you for my own</item>
+        <item>More than you could ever know</item>
+        <item>Make my wish come true</item>
+        <item>Baby, all I want for Christmas... is you</item>
+        <item>You, baby</item>
+        <item>All I want for Christmas is you, baby</item>
+        <item>All I want for Christmas is you, baby</item>
+        <item>All I want for Christmas is you, baby</item>
+        <item>All I want for Christmas is you, baby</item>
+        <item>All I want for Christmas is you, baby</item>
+    </string-array>
+</resources>

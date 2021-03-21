@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lab05Lifecycle</string>
+    <string name="temporary_values">Temporary Values</string>
+    <string name="permanent_values">Permanent Values</string>
+    <string name="lifecycle_events_lab">Lifecycle Events Lab</string>
+    <string name="reset_values">Reset values</string>
+</resources>
