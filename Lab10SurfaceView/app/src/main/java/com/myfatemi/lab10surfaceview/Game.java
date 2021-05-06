@@ -29,12 +29,11 @@ public class Game extends SurfaceView {
     private static final int CLICKED_COLOR = Color.GREEN;
     public static final int BUTTON_LEFT = 0;
     public static final int BUTTON_RIGHT = 1;
-    public static final int MILLISECONDS_PER_FRAME = 100;
+    public static final int MILLISECONDS_PER_FRAME = 1000 / 60;
     public static final Paint BACKGROUND_PAINT = new Paint(Color.WHITE);
 
     private void addSprite(Sprite sprite) {
         this.sprites.add(sprite);
-        this.invalidate();
     }
 
     private void moveSprites() {
@@ -58,7 +57,6 @@ public class Game extends SurfaceView {
     }
 
     public void onButtonDown(int direction) {
-        this.invalidate();
         for (Sprite sprite : this.sprites) {
             if (direction == BUTTON_LEFT) {
                 sprite.setMovingDirection(-1, 0);
@@ -69,7 +67,6 @@ public class Game extends SurfaceView {
     }
 
     public void onButtonUp() {
-        this.invalidate();
         for (Sprite sprite : this.sprites) {
             sprite.setMovingDirection(0, 0);
         }
@@ -153,18 +150,11 @@ public class Game extends SurfaceView {
         final float x = event.getX(), y = event.getY();
         Log.i("touch", "Received a touch event at {x=" + x + ", y=" + y + "}");
 
-        boolean anyChanged = false;
-
         for (Sprite sprite : this.sprites) {
             if (sprite.contains(x / GAME_UNIT_TO_PIXELS, y / GAME_UNIT_TO_PIXELS)) {
                 Log.i("touch", "Touch event interacted with a sprite");
                 sprite.setColor(CLICKED_COLOR);
-                anyChanged = true;
             }
-        }
-
-        if (anyChanged) {
-            this.invalidate();
         }
 
         return super.onTouchEvent(event);

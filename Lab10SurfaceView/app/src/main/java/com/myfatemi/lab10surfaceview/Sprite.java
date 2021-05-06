@@ -14,8 +14,6 @@ public class Sprite extends RectF {
     private int frameSequenceNumber = 0;
 
     public static final int GAME_UNIT_TO_PIXELS = 10;
-    public static final int BITMAP_GRID_SQUARE_WIDTH = 32;
-    public static final int BITMAP_GRID_SQUARE_HEIGHT = 48;
 
     public static final byte[] WALKING_DOWN_FRAMES = {0, 1, 2, 3};
     public static final byte[] WALKING_LEFT_FRAMES = {4, 5, 6, 7};
