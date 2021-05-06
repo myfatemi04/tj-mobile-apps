@@ -9,21 +9,26 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-import static com.myfatemi.lab09sprites.Sprite.GAME_UNIT_TO_PIXELS;
+import static com.myfatemi.lab10surfaceview.Sprite.GAME_UNIT_TO_PIXELS;
 
-public class Game extends View {
+public class Game extends SurfaceView {
     private final ArrayList<Sprite> sprites = new ArrayList<>();
     private Bitmap spriteBitmap;
     private Bitmap bombBitmap;
+    private Thread renderThread;
+    private boolean running = false;
+    private SurfaceHolder surfaceHolder;
     private static final int CLICKED_COLOR = Color.GREEN;
     public static final int BUTTON_LEFT = 0;
     public static final int BUTTON_RIGHT = 1;
+    public static final int MILLISECONDS_PER_FRAME = 100;
 
     private void addSprite(Sprite sprite) {
         this.sprites.add(sprite);
@@ -47,6 +52,42 @@ public class Game extends View {
         this.addSprite(new Sprite(Color.RED, 25, 10));
         this.addSprite(new Sprite(Color.RED, 20, 15));
         this.addSprite(new Sprite(Color.RED, 15, 5));
+        this.surfaceHolder = getHolder();
+
+        this.renderThread = new Thread(() -> {
+            Canvas canvas;
+            long nextFrameDrawTime = System.currentTimeMillis() + MILLISECONDS_PER_FRAME * 1;
+            while (this.running) {
+                if (this.surfaceHolder != null) {
+                    canvas = this.surfaceHolder.lockCanvas();
+                    if (canvas == null) {
+                        continue;
+                    }
+
+                    canvas.save();
+
+                    try {
+                        this.draw(canvas);
+                    } catch (Exception e) {
+                        Log.e("draw", e.getMessage());
+                    }
+
+                    canvas.restore();
+                    surfaceHolder.unlockCanvasAndPost(canvas);
+
+                    if (System.currentTimeMillis() < nextFrameDrawTime) {
+                        long timeDifference = nextFrameDrawTime - System.currentTimeMillis();
+                        try {
+                            Thread.sleep(timeDifference);
+                        } catch (InterruptedException e) {
+                            Log.i("draw", "Thread was interrupted");
+                        }
+                    } else {
+                        nextFrameDrawTime = System.currentTimeMillis() + MILLISECONDS_PER_FRAME * 1;
+                    }
+                }
+            }
+        });
     }
 
     public void onButtonDown(int direction) {
@@ -71,9 +112,7 @@ public class Game extends View {
         canvas.drawBitmap(this.bombBitmap, null, new Rect(300, 300, 350, 350), null);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+    public void draw(Canvas canvas) {
         this.moveSprites();
 
         for (Sprite sprite : this.sprites) {
