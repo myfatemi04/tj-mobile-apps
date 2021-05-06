@@ -6,7 +6,7 @@
     tools:context=".GameFragment">
 
     <view
-        class="com.myfatemi.lab09sprites.Game"
+        class="com.myfatemi.lab10surfaceview.Game"
         android:id="@+id/game"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

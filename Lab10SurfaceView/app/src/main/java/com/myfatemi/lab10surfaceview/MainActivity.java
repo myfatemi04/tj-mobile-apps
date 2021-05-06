@@ -61,8 +61,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        this.gameFragment.game.start();
+    }
+
+    @Override
+    protected void onPause() {
+        this.gameFragment.game.stop();
+    }
+
+    @Override
     protected void onStop() {
         this.mediaPlayer.stop();
         super.onStop();
+        this.gameFragment.game.stop();
     }
 }

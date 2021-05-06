@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -20,15 +21,16 @@ import static com.myfatemi.lab10surfaceview.Sprite.GAME_UNIT_TO_PIXELS;
 
 public class Game extends SurfaceView {
     private final ArrayList<Sprite> sprites = new ArrayList<>();
-    private Bitmap spriteBitmap;
-    private Bitmap bombBitmap;
+    private final Bitmap spriteBitmap;
+    private final Bitmap bombBitmap;
     private Thread renderThread;
     private boolean running = false;
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     private static final int CLICKED_COLOR = Color.GREEN;
     public static final int BUTTON_LEFT = 0;
     public static final int BUTTON_RIGHT = 1;
     public static final int MILLISECONDS_PER_FRAME = 100;
+    public static final Paint BACKGROUND_PAINT = new Paint(Color.WHITE);
 
     private void addSprite(Sprite sprite) {
         this.sprites.add(sprite);
@@ -53,41 +55,6 @@ public class Game extends SurfaceView {
         this.addSprite(new Sprite(Color.RED, 20, 15));
         this.addSprite(new Sprite(Color.RED, 15, 5));
         this.surfaceHolder = getHolder();
-
-        this.renderThread = new Thread(() -> {
-            Canvas canvas;
-            long nextFrameDrawTime = System.currentTimeMillis() + MILLISECONDS_PER_FRAME * 1;
-            while (this.running) {
-                if (this.surfaceHolder != null) {
-                    canvas = this.surfaceHolder.lockCanvas();
-                    if (canvas == null) {
-                        continue;
-                    }
-
-                    canvas.save();
-
-                    try {
-                        this.draw(canvas);
-                    } catch (Exception e) {
-                        Log.e("draw", e.getMessage());
-                    }
-
-                    canvas.restore();
-                    surfaceHolder.unlockCanvasAndPost(canvas);
-
-                    if (System.currentTimeMillis() < nextFrameDrawTime) {
-                        long timeDifference = nextFrameDrawTime - System.currentTimeMillis();
-                        try {
-                            Thread.sleep(timeDifference);
-                        } catch (InterruptedException e) {
-                            Log.i("draw", "Thread was interrupted");
-                        }
-                    } else {
-                        nextFrameDrawTime = System.currentTimeMillis() + MILLISECONDS_PER_FRAME * 1;
-                    }
-                }
-            }
-        });
     }
 
     public void onButtonDown(int direction) {
@@ -112,7 +79,66 @@ public class Game extends SurfaceView {
         canvas.drawBitmap(this.bombBitmap, null, new Rect(300, 300, 350, 350), null);
     }
 
-    public void draw(Canvas canvas) {
+    public void start() {
+        this.running = true;
+
+        this.renderThread = new Thread(() -> {
+            Canvas canvas;
+            long nextFrameDrawTime = System.currentTimeMillis() + MILLISECONDS_PER_FRAME;
+            while (this.running) {
+                if (this.surfaceHolder != null) {
+                    canvas = this.surfaceHolder.lockCanvas();
+                    if (canvas == null) {
+                        continue;
+                    }
+
+                    canvas.save();
+
+                    try {
+                        this._drawToCanvas(canvas);
+                    } catch (Exception e) {
+                        Log.e("draw", e.getMessage());
+                    }
+
+                    canvas.restore();
+                    surfaceHolder.unlockCanvasAndPost(canvas);
+
+                    if (System.currentTimeMillis() < nextFrameDrawTime) {
+                        long timeDifference = nextFrameDrawTime - System.currentTimeMillis();
+                        try {
+                            Thread.sleep(timeDifference);
+                        } catch (InterruptedException e) {
+                            Log.i("draw", "Thread was interrupted");
+                        }
+                    } else {
+                        nextFrameDrawTime = System.currentTimeMillis() + MILLISECONDS_PER_FRAME;
+                    }
+                }
+            }
+        });
+
+        this.renderThread.start();
+    }
+
+    public void stop() {
+        if (this.running) {
+            this.running = false;
+            if (this.renderThread != null) {
+                try {
+                    this.renderThread.join();
+                } catch (InterruptedException e) {
+                    Log.e("game", "Thread interrupted while joining renderThread");
+                }
+                this.renderThread = null;
+            }
+        }
+    }
+
+    public void _drawToCanvas(Canvas canvas) {
+        int width = canvas.getWidth();
+        int height = canvas.getHeight();
+        canvas.drawRect(new Rect(0, 0, width, height), BACKGROUND_PAINT);
+
         this.moveSprites();
 
         for (Sprite sprite : this.sprites) {
@@ -120,8 +146,6 @@ public class Game extends SurfaceView {
         }
 
         this.drawBombs(canvas);
-
-        invalidate();
     }
 
     @Override
