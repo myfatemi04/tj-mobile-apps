@@ -43,8 +43,6 @@ public class Sprite extends RectF {
     }
 
     public boolean step() {
-        Log.i("sprite", "Stepping sprite by (" + this.dx + ", " + this.dy + ")");
-
         offset(dx, dy);
 
         boolean moved = this.dx != 0 || this.dy != 0;
@@ -108,13 +106,7 @@ public class Sprite extends RectF {
                 this.right * GAME_UNIT_TO_PIXELS,
                 this.bottom * GAME_UNIT_TO_PIXELS);
 
-        Log.i("sprite", "Drawing sprite at " + spriteProjection.toShortString());
-
         Rect sourceRect = bitmapFrameIDToSourceRect(getCurrentFrameID(), bitmap.getWidth()/4, bitmap.getHeight()/4);
-
-        Log.i("paint", this.paint.toString());
-
-//        canvas.drawRect(spriteProjection, this.paint);
 
         canvas.drawBitmap(bitmap, sourceRect, spriteProjection, null);
     }
