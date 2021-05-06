@@ -62,12 +62,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        this.gameFragment.game.start();
+        super.onResume();
+        if (this.gameFragment != null) {
+            this.gameFragment.game.start();
+        }
     }
 
     @Override
     protected void onPause() {
-        this.gameFragment.game.stop();
+        super.onPause();
+        if (this.gameFragment != null) {
+            this.gameFragment.game.stop();
+        }
     }
 
     @Override
